@@ -11,13 +11,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Thrones.Gaming.Chess">
-      <HintPath>..\..\ChessGame\Thrones.Gaming.Chess\bin\Debug\netcoreapp3.1\Thrones.Gaming.Chess.dll</HintPath>
-    </Reference>
+    <Folder Include="sessions\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="sessions\" />
+    <ProjectReference Include="..\Thrones.Gaming.Chess\Thrones.Gaming.Chess.csproj" />
   </ItemGroup>
 
 

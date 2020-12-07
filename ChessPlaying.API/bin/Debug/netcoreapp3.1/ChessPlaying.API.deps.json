@@ -27,7 +27,7 @@
           "Microsoft.EntityFrameworkCore": "3.1.10",
           "Microsoft.EntityFrameworkCore.SqlServer": "3.1.10",
           "Newtonsoft.Json": "12.0.3",
-          "Thrones.Gaming.Chess": "1.0.0.0",
+          "Thrones.Gaming.Chess": "1.0.0",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.1.0.0",
@@ -1300,12 +1300,12 @@
           "System.Xml.XmlDocument": "4.3.0"
         }
       },
-      "Thrones.Gaming.Chess/1.0.0.0": {
+      "Thrones.Gaming.Chess/1.0.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3"
+        },
         "runtime": {
-          "Thrones.Gaming.Chess.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "Thrones.Gaming.Chess.dll": {}
         },
         "compile": {
           "Thrones.Gaming.Chess.dll": {}
@@ -3591,8 +3591,8 @@
       "path": "system.xml.xmlserializer/4.3.0",
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
-    "Thrones.Gaming.Chess/1.0.0.0": {
-      "type": "reference",
+    "Thrones.Gaming.Chess/1.0.0": {
+      "type": "project",
       "serviceable": false,
       "sha512": ""
     },
