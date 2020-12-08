@@ -206,7 +206,7 @@ namespace Thrones.Gaming.Chess.SessionManagement
             {
                 if (nextPlayerStone.TryMove(stone.Location, Table, out IStone _s))
                 {
-                    bool nextPlayerStoneCouldMove = true;
+                    bool checkStoneEaterCouldMove = true;
                     // şah çeken taşı yiyebilecek olan taş bu hareketi yapabilir mi?
                     nextPlayerStone.GhostMove(stone.Location);
 
@@ -218,18 +218,18 @@ namespace Thrones.Gaming.Chess.SessionManagement
                             continue;
                         }
 
-                        if (currentPlayerStone.TryMove(king.Location, Table, out IStone _k))
+                        if (currentPlayerStone.TryMove(stone.Location, Table, out IStone _k))
                         {
                             // danger
                             // nextPlayerStone could not move!!
-                            nextPlayerStoneCouldMove = false;
+                            checkStoneEaterCouldMove = false;
                             break;
                         }
                     }
 
                     nextPlayerStone.UndoGhost();
 
-                    if (nextPlayerStoneCouldMove)
+                    if (checkStoneEaterCouldMove)
                     {
                         checkStoneCouldEated = true;
                         checkStoneEater = nextPlayerStone;
@@ -256,16 +256,19 @@ namespace Thrones.Gaming.Chess.SessionManagement
 
                         if (currentPlayerStone.TryMove(stone.StoredLocation, Table, out IStone _k))
                         {
-                            Checkmate = true;
-                            stone.UndoGhost();
-                            return;
+                            //Checkmate = true;
+                            //stone.UndoGhost();
+                            //return;
+
+                            checkStoneCouldEated = false;
+                            break;
                         }
                     }
 
                     stone.UndoGhost();
                 }
 
-                return;
+                //return;
             }
 
 
@@ -296,14 +299,9 @@ namespace Thrones.Gaming.Chess.SessionManagement
                 }
             }
 
-            //if ((stone is Knight) == false && someStoneBroked == false)
-            //{
-            //    Checkmate = true;
-            //    Check = false;
-            //}
 
             // king kaçabilir mi?
-            if (someStoneBroked == false && king.CouldRun(Table) == false)
+            if (checkStoneCouldEated == false && someStoneBroked == false && king.CouldRun(Table, stone.Location) == false)
             {
                 Checkmate = true;
                 Check = false;
@@ -492,7 +490,7 @@ namespace Thrones.Gaming.Chess.SessionManagement
                             continue;
                         }
 
-                        var instraction = Instruction.CreateOne(stone, targetLocation, this, $"{DateTime.Now} - [player: {CurrentPlayer.Nickname}]>{command}");
+                        var instraction = Instruction.CreateOne(stone, targetLocation, this, command);
                         
                         var result = instraction.TryDo();
                         if (result.IsOK)
@@ -549,7 +547,7 @@ namespace Thrones.Gaming.Chess.SessionManagement
                     var lastMovementInstaction = GetLastMovement();
                     if (lastMovementInstaction != null)
                     {
-                        WriteLastCommand(lastMovementInstaction.RawCommand);
+                        WriteLastCommand(lastMovementInstaction.Log);
                     }
 
                     command = WaitCommand();
@@ -567,7 +565,7 @@ namespace Thrones.Gaming.Chess.SessionManagement
                         var lastMovementInstaction = GetLastMovement();
                         if (lastMovementInstaction != null)
                         {
-                            WriteLastCommand(lastMovementInstaction.RawCommand);
+                            WriteLastCommand(lastMovementInstaction.Log);
                         }
                         command = WaitCommand();
                     }
@@ -654,7 +652,7 @@ namespace Thrones.Gaming.Chess.SessionManagement
                 }
                 #endregion
 
-                var instraction = Instruction.CreateOne(stone, targetLocation, this, $"{DateTime.Now} - [player: {CurrentPlayer.Nickname}]>{command}");
+                var instraction = Instruction.CreateOne(stone, targetLocation, this, command);
 
                 var result = instraction.TryDo();
                 if (result.IsOK)
@@ -722,8 +720,16 @@ namespace Thrones.Gaming.Chess.SessionManagement
             {
                 Stones = Table.Stones.Select(s => new StoneInformation(s)).ToList()
             },
-            MovementResult = new MovementResultInformation(MovementInstructions.GetLast(), Check, Checkmate)
+            MovementResult = BuildMovementResultInformation()
         };
+
+        private MovementResultInformation BuildMovementResultInformation()
+        {
+            string command = MovementInstructions.Keys.LastOrDefault()?.RawCommand;
+            var result = MovementInstructions.GetLast();
+
+            return new MovementResultInformation(result, command, Check, Checkmate);
+        }
 
         public ISession SetIndexer(int currentIndexer)
         {

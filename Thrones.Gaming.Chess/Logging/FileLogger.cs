@@ -23,7 +23,7 @@ namespace Thrones.Gaming.Chess.Logging
 
         public void SaveInstructions(IEnumerable<Instruction> instructions)
         {
-            System.IO.File.AppendAllLines(fileFullPath, instructions.Select(i => i.RawCommand));
+            System.IO.File.AppendAllLines(fileFullPath, instructions.Select(i => i.Log));
         }
 
         public void SetFileName(string fileName)

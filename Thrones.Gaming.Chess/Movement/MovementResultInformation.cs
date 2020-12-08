@@ -15,8 +15,9 @@ namespace Thrones.Gaming.Chess.Movement
         public bool Check { get; set; }
         public bool Checkmate { get; set; }
         public StoneInformation Stone { get; set; }
+        public string Command { get; set; }
 
-        public MovementResultInformation(MovementResult result, bool check = false, bool checkmate = false)
+        public MovementResultInformation(MovementResult result, string command,  bool check = false, bool checkmate = false)
         {
             if (result == null)
             {
@@ -28,6 +29,7 @@ namespace Thrones.Gaming.Chess.Movement
             Message = result.Message;
             CheckRemoved = result.CheckRemoved;
             Stone = result.Stone == null ? null : new StoneInformation(result.Stone);
+            Command = command;
             Check = check;
             Checkmate = checkmate;
         }

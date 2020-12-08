@@ -15,19 +15,23 @@ namespace Thrones.Gaming.Chess.Movement
         public Session Session { get; private set; }
         public MovementResult Result { get; private set; }
         public string RawCommand { get; private set; }
+        public string Log { get; set; }
 
-        private Instruction(IStone stone, Location target, Session session, string rawCommand)
+        private Instruction(IStone stone, Location target, Session session, string rawCommand, string log)
         {
             MovingStone = stone;
             Target = target;
             Session = session;
             RawCommand = rawCommand;
+            Log = log;
             FromLocation = stone.Location;
         }
 
-        public static Instruction CreateOne(IStone stone, Location target, Session session, string rawCommand)
+        public static Instruction CreateOne(IStone stone, Location target, Session session, string command)
         {
-            return new Instruction(stone, target, session, rawCommand);
+            var log = $"{DateTime.Now} - [player: {session.CurrentPlayer.Nickname}]>{command}";
+
+            return new Instruction(stone, target, session, command, log);
         }
 
         public MovementResult TryDo()

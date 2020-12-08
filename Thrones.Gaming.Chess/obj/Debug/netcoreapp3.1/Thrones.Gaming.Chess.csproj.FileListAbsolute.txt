@@ -6,3 +6,4 @@ C:\Users\faruk\source\repos\ChessAPI\Thrones.Gaming.Chess\bin\Debug\netcoreapp3.
 C:\Users\faruk\source\repos\ChessAPI\Thrones.Gaming.Chess\bin\Debug\netcoreapp3.1\Thrones.Gaming.Chess.pdb
 C:\Users\faruk\source\repos\ChessAPI\Thrones.Gaming.Chess\obj\Debug\netcoreapp3.1\Thrones.Gaming.Chess.dll
 C:\Users\faruk\source\repos\ChessAPI\Thrones.Gaming.Chess\obj\Debug\netcoreapp3.1\Thrones.Gaming.Chess.pdb
+C:\Users\faruk\source\repos\ChessAPI\Thrones.Gaming.Chess\obj\Debug\netcoreapp3.1\Thrones.Gaming.Chess.csprojAssemblyReference.cache

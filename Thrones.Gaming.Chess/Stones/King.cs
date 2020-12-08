@@ -74,7 +74,7 @@ namespace Thrones.Gaming.Chess.Stones
             return true;
         }
 
-        public bool CouldRun(Table table)
+        public bool CouldRun(Table table, Location checkLocation)
         {
             IStone _s = null;
             bool leftOpen = false;
@@ -91,7 +91,7 @@ namespace Thrones.Gaming.Chess.Stones
 
             // left
             var left = table.GetLocation(Location.X - 1, Location.Y);
-            if (left != null && TryMove(left, table, out _s))
+            if (left != null && left != checkLocation && TryMove(left, table, out _s))
             {
                 leftOpen = true;
                 GhostMove(left);
@@ -114,7 +114,7 @@ namespace Thrones.Gaming.Chess.Stones
 
             // left-top
             var leftTop = table.GetLocation(Location.X - 1, Location.Y + 1);
-            if (leftTop != null && TryMove(leftTop, table, out _s))
+            if (leftTop != null && leftTop != checkLocation && TryMove(leftTop, table, out _s))
             {
                 leftTopOpen = true;
                 GhostMove(leftTop);
@@ -137,7 +137,7 @@ namespace Thrones.Gaming.Chess.Stones
 
             // top
             var top = table.GetLocation(Location.X, Location.Y + 1);
-            if (top != null && TryMove(top, table, out _s))
+            if (top != null && top != checkLocation && TryMove(top, table, out _s))
             {
                 topOpen = true;
                 GhostMove(top);
@@ -159,7 +159,7 @@ namespace Thrones.Gaming.Chess.Stones
 
             // right-top
             var rightTop = table.GetLocation(Location.X + 1, Location.Y + 1);
-            if (rightTop != null && TryMove(rightTop, table, out _s))
+            if (rightTop != null && rightTop != checkLocation && TryMove(rightTop, table, out _s))
             {
                 rightTopOpen = true;
                 GhostMove(rightTop);
@@ -181,7 +181,7 @@ namespace Thrones.Gaming.Chess.Stones
 
             // right
             var right = table.GetLocation(Location.X + 1, Location.Y);
-            if (right != null && TryMove(right, table, out _s))
+            if (right != null && right != checkLocation && TryMove(right, table, out _s))
             {
                 rightOpen = false;
                 GhostMove(right);
@@ -203,7 +203,7 @@ namespace Thrones.Gaming.Chess.Stones
 
             // right-bottom
             var rightBottom = table.GetLocation(Location.X + 1, Location.Y - 1);
-            if (rightBottom != null && TryMove(rightBottom, table, out _s))
+            if (rightBottom != null && rightBottom != checkLocation && TryMove(rightBottom, table, out _s))
             {
                 rightBottomOpen = true;
                 GhostMove(rightBottom);
@@ -225,7 +225,7 @@ namespace Thrones.Gaming.Chess.Stones
 
             // bottom
             var bottom = table.GetLocation(Location.X, Location.Y - 1);
-            if (bottom != null && TryMove(bottom, table, out _s))
+            if (bottom != null && bottom != checkLocation && TryMove(bottom, table, out _s))
             {
                 bottomOpen = true;
                 GhostMove(bottom);
@@ -247,7 +247,7 @@ namespace Thrones.Gaming.Chess.Stones
 
             // left-bottom
             var leftBottom = table.GetLocation(Location.X - 1, Location.Y - 1);
-            if (leftBottom != null && TryMove(leftBottom, table, out _s))
+            if (leftBottom != null && leftBottom != checkLocation && TryMove(leftBottom, table, out _s))
             {
                 leftBottomOpen = true;
                 GhostMove(leftBottom);
