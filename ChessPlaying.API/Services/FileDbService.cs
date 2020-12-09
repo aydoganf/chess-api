@@ -32,7 +32,8 @@ namespace ChessPlaying.API.Services
 
             try
             {
-                var directory = new System.IO.DirectoryInfo(sessionPath);
+                
+                var directory = new System.IO.DirectoryInfo(@$"{System.IO.Directory.GetCurrentDirectory()}\sessions");
                 Console.WriteLine(directory.FullName);
                 Console.WriteLine(directory.Exists);
                 Console.WriteLine(directory.Name);
