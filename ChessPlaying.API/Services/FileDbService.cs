@@ -38,8 +38,8 @@ namespace ChessPlaying.API.Services
 
                 Console.WriteLine("-----------------------");
 
-                Console.WriteLine(@$"{System.IO.Directory.GetCurrentDirectory()}\sessions\ is exists?");
-                Console.WriteLine(System.IO.Directory.Exists(@$"{System.IO.Directory.GetCurrentDirectory()}\sessions\"));
+                Console.WriteLine(@$"heroku_output\sessions\ is exists?");
+                Console.WriteLine(System.IO.Directory.Exists(@$"heroku_output\sessions\"));
 
                 Console.WriteLine("-----------------------");
 
@@ -62,10 +62,14 @@ namespace ChessPlaying.API.Services
                 {
                     foreach (var item in file.Directory.GetFiles())
                     {
-                        Console.WriteLine(item.Name);
+                        Console.WriteLine(item.FullName);
                     }
                 }
-                
+
+                Console.WriteLine("-----------------------");
+
+                Console.WriteLine(@$"heroku_output\sessions\ is exists?");
+                Console.WriteLine(System.IO.Directory.Exists(@$"heroku_output\sessions\"));
 
                 //var stream = System.IO.File.Open(@$"{System.IO.Directory.GetCurrentDirectory()}\sessions\{name}.txt", System.IO.FileMode.Open);
                 //Console.WriteLine("file opened");
