@@ -711,17 +711,19 @@ namespace Thrones.Gaming.Chess.SessionManagement
             CurrentIndexer = CurrentIndexer,
             FullTypeName = GetType().FullName,
             Name = Name,
-            Players = Players.Select(p => new PlayerInformation()
-            {
-                Nickname = p.Nickname,
-                Duration = p.Duration
-            }).ToList(),
+            Players = PlayerInformations,
             Table = new TableInformation()
             {
                 Stones = Table.Stones.Select(s => new StoneInformation(s)).ToList()
             },
             MovementResult = BuildMovementResultInformation()
         };
+
+        private List<PlayerInformation> PlayerInformations => Players.Select(p => new PlayerInformation()
+        {
+            Nickname = p.Nickname,
+            Duration = p.Duration
+        }).ToList();
 
         private MovementResultInformation BuildMovementResultInformation()
         {
@@ -740,5 +742,7 @@ namespace Thrones.Gaming.Chess.SessionManagement
         }
 
         public SessionInformation GetInformation() => SessionInformation;
+
+        public List<PlayerInformation> GetPlayerInformations() => PlayerInformations;
     }
 }

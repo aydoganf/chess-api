@@ -11,5 +11,8 @@ namespace ChessPlaying.API.Services
         Session CreateSession(string name, string sessionInfo);
         Session GetSession(string name);
         Session UpdateSession(Session session);
+        IEnumerable<object> GetSessions();
+
+        void DeleteSession(string name);
     }
 }

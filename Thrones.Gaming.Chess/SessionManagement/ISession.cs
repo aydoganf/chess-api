@@ -26,5 +26,7 @@ namespace Thrones.Gaming.Chess.SessionManagement
         SessionInformation Command(string command);
 
         SessionInformation GetInformation();
+
+        List<PlayerInformation> GetPlayerInformations();
     }
 }

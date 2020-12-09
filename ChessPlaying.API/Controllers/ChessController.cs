@@ -3,6 +3,8 @@ using ChessPlaying.API.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using Thrones.Gaming.Chess.SessionManagement;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ChessPlaying.API.Controllers
 {
@@ -64,6 +66,39 @@ namespace ChessPlaying.API.Controllers
             _chessDbService.UpdateSession(session);
 
             return sessionInfo;
+        }
+
+        [HttpGet("sessions")]
+        public IEnumerable<object> GetSessions()
+        {
+            List<object> sessions = new List<object>();
+            var sessionNames = _chessDbService.GetSessions();
+
+            foreach (var sessionName in sessionNames)
+            {
+                var session = _chessDbService.GetSession(sessionName.ToString());
+                var chessSession = SessionFactory.CreateFrom(session.SessionInfo);
+
+                var players = chessSession.GetPlayerInformations();
+                var title = string.Join(" vs ", players.Select(p => p.Nickname));
+
+                sessions.Add(new
+                {
+                    Title = title,
+                    Players = players,
+                    SessionName = session.SessionName
+                });
+            }
+
+            return sessions;
+        }
+
+        [HttpDelete("{sessionName}")]
+        public bool DeleteSession(string sessionName)
+        {
+            _chessDbService.DeleteSession(sessionName);
+
+            return true;
         }
     }
 }

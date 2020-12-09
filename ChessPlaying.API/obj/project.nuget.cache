@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "YUnLVUX8nvMLNU/NRQW3/pe6JxfwCesIyBF4/YA9A9iF/aOaboqQwNeMqEZet4YWjvTkoKv5VobzBSwWAXdOIA==",
+  "dgSpecHash": "0Uu+kU729QMvj8n77yJ1po1elI82sVPG9RzISvsouKhywWkBVVnTaewqAF8Trm+KXWAK3uA2kHNBpSTC2gHCGw==",
   "success": true,
   "projectFilePath": "C:\\Users\\faruk\\source\\repos\\ChessAPI\\ChessPlaying.API\\ChessPlaying.API.csproj",
   "expectedPackageFiles": [
@@ -97,7 +97,9 @@
     "C:\\Users\\faruk\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\faruk\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\faruk\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\faruk\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Users\\faruk\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\faruk\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "C:\\Users\\faruk\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.10\\microsoft.netcore.app.host.win-x64.3.1.10.nupkg.sha512"
   ],
   "logs": []
 }

@@ -39,5 +39,17 @@ namespace ChessPlaying.API.Services
             System.IO.File.WriteAllText($@"{sessionPath}\{session.SessionName}.txt", serialized);
             return session;
         }
+
+        public IEnumerable<object> GetSessions()
+        {
+            var directory = new System.IO.DirectoryInfo(sessionPath);
+
+            return directory.GetFiles().Select(f => System.IO.Path.GetFileNameWithoutExtension(f.Name));
+        }
+
+        public void DeleteSession(string name)
+        {
+            System.IO.File.Delete($@"{sessionPath}\{name}.txt");
+        }
     }
 }
