@@ -28,7 +28,20 @@ namespace ChessPlaying.API.Services
 
         public Session GetSession(string name)
         {
-            var sessionInfo = System.IO.File.ReadAllText($@"{sessionPath}\{name}.txt");
+            var filePath = $@"{sessionPath}\{name}.txt";
+
+            try
+            {
+                var directory = new System.IO.DirectoryInfo(sessionPath);
+                Console.WriteLine(directory.FullName);
+                Console.WriteLine(directory.Exists);
+                Console.WriteLine(directory.Name);
+            }
+            catch (Exception)
+            {
+            }
+
+            var sessionInfo = System.IO.File.ReadAllText(filePath);
             return Newtonsoft.Json.JsonConvert.DeserializeObject<Session>(sessionInfo);
         }
 
