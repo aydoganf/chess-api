@@ -42,7 +42,7 @@ namespace ChessPlaying.API.Services
 
         public IEnumerable<object> GetSessions()
         {
-            var directory = new System.IO.DirectoryInfo(sessionPath);
+            var directory = new System.IO.DirectoryInfo(@$"{rootPath}/sessions");
 
             return directory.GetFiles().Select(f => f.Name.Split('.')[0]);
         }
