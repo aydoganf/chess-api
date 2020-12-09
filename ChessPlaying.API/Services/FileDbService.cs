@@ -44,7 +44,7 @@ namespace ChessPlaying.API.Services
         {
             var directory = new System.IO.DirectoryInfo(sessionPath);
 
-            return directory.GetFiles().Select(f => System.IO.Path.GetFileNameWithoutExtension(f.Name));
+            return directory.GetFiles().Select(f => f.Name.Split('.')[0]);
         }
 
         public void DeleteSession(string name)
