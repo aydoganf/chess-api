@@ -55,10 +55,22 @@ namespace ChessPlaying.API.Services
                 Console.WriteLine(file.Exists);
                 Console.WriteLine(file.Name);
 
-                var stream = System.IO.File.Open(@$"{System.IO.Directory.GetCurrentDirectory()}\sessions\{name}.txt", System.IO.FileMode.Open);
-                Console.WriteLine("file opened");
-                stream.Close();
-                Console.WriteLine("file closed");
+                Console.WriteLine("-----------------------");
+                Console.WriteLine($"file directory exists: {file.Directory.Exists}");
+
+                if (file.Directory.Exists)
+                {
+                    foreach (var item in file.Directory.GetFiles())
+                    {
+                        Console.WriteLine(item.Name);
+                    }
+                }
+                
+
+                //var stream = System.IO.File.Open(@$"{System.IO.Directory.GetCurrentDirectory()}\sessions\{name}.txt", System.IO.FileMode.Open);
+                //Console.WriteLine("file opened");
+                //stream.Close();
+                //Console.WriteLine("file closed");
             }
             catch (Exception ex)
             {
