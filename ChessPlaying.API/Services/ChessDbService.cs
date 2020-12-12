@@ -47,6 +47,10 @@ namespace ChessPlaying.API.Services
             return _chessDbContext.Sessions.Select(s => s.SessionName);
         }
 
+        public void Initialize()
+        {
+        }
+
         public Session UpdateSession(Session session)
         {
             var dbSession = GetSession(session.SessionName);

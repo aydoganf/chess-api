@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="sessions\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Thrones.Gaming.Chess\Thrones.Gaming.Chess.csproj" />
   </ItemGroup>
 

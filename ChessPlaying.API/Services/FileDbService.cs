@@ -122,5 +122,13 @@ namespace ChessPlaying.API.Services
 
             System.IO.File.Delete($@"{sessionPath}\{name}.txt");
         }
+
+        public void Initialize()
+        {
+            System.IO.Directory.CreateDirectory(sessionPath);
+            System.IO.File
+                .Create(sessionsTxt)
+                .Close();
+        }
     }
 }
