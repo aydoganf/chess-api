@@ -11,6 +11,7 @@ namespace ChessPlaying.API.Services
     {
         private string sessionPath => $@"{Environment.CurrentDirectory}\sessions";
         private string sessionsTxt => $@"{sessionPath}\sessions.txt";
+        private char sessionSplitter = ',';
 
         public Session CreateSession(string name, string sessionInfo)
         {
@@ -36,57 +37,60 @@ namespace ChessPlaying.API.Services
         {
             var filePath = $@"{sessionPath}\{name}.txt";
 
-            try
-            {
+            #region old
 
-                Console.WriteLine($"{System.IO.Directory.GetCurrentDirectory()} is exists?");
-                Console.WriteLine(System.IO.Directory.Exists(System.IO.Directory.GetCurrentDirectory()));
+            //try
+            //{
 
-                Console.WriteLine("-----------------------");
+            //    Console.WriteLine($"{System.IO.Directory.GetCurrentDirectory()} is exists?");
+            //    Console.WriteLine(System.IO.Directory.Exists(System.IO.Directory.GetCurrentDirectory()));
 
-                Console.WriteLine(@$"heroku_output\sessions\ is exists?");
-                Console.WriteLine(System.IO.Directory.Exists(@$"heroku_output\sessions\"));
+            //    Console.WriteLine("-----------------------");
 
-                Console.WriteLine("-----------------------");
+            //    Console.WriteLine(@$"heroku_output\sessions\ is exists?");
+            //    Console.WriteLine(System.IO.Directory.Exists(@$"heroku_output\sessions\"));
+
+            //    Console.WriteLine("-----------------------");
 
 
-                var directory = new System.IO.DirectoryInfo(@$"{System.IO.Directory.GetCurrentDirectory()}\sessions\");
-                Console.WriteLine(directory.FullName);
-                Console.WriteLine(directory.Exists);
-                Console.WriteLine(directory.Name);
-                Console.WriteLine("-----------------------");
+            //    var directory = new System.IO.DirectoryInfo(@$"{System.IO.Directory.GetCurrentDirectory()}\sessions\");
+            //    Console.WriteLine(directory.FullName);
+            //    Console.WriteLine(directory.Exists);
+            //    Console.WriteLine(directory.Name);
+            //    Console.WriteLine("-----------------------");
 
-                var file = new System.IO.FileInfo(@$"{System.IO.Directory.GetCurrentDirectory()}\sessions\{name}.txt");
-                Console.WriteLine(file.FullName);
-                Console.WriteLine(file.Exists);
-                Console.WriteLine(file.Name);
+            //    var file = new System.IO.FileInfo(@$"{System.IO.Directory.GetCurrentDirectory()}\sessions\{name}.txt");
+            //    Console.WriteLine(file.FullName);
+            //    Console.WriteLine(file.Exists);
+            //    Console.WriteLine(file.Name);
 
-                Console.WriteLine("-----------------------");
-                Console.WriteLine($"file directory exists: {file.Directory.Exists}");
+            //    Console.WriteLine("-----------------------");
+            //    Console.WriteLine($"file directory exists: {file.Directory.Exists}");
 
-                if (file.Directory.Exists)
-                {
-                    foreach (var item in file.Directory.GetFiles())
-                    {
-                        Console.WriteLine(item.FullName);
-                    }
-                }
+            //    if (file.Directory.Exists)
+            //    {
+            //        foreach (var item in file.Directory.GetFiles())
+            //        {
+            //            Console.WriteLine(item.FullName);
+            //        }
+            //    }
 
-                Console.WriteLine("-----------------------");
+            //    Console.WriteLine("-----------------------");
 
-                Console.WriteLine(@$"heroku_output\sessions\ is exists?");
-                Console.WriteLine(System.IO.Directory.Exists(@$"heroku_output\sessions\"));
+            //    Console.WriteLine(@$"heroku_output\sessions\ is exists?");
+            //    Console.WriteLine(System.IO.Directory.Exists(@$"heroku_output\sessions\"));
 
-                //var stream = System.IO.File.Open(@$"{System.IO.Directory.GetCurrentDirectory()}\sessions\{name}.txt", System.IO.FileMode.Open);
-                //Console.WriteLine("file opened");
-                //stream.Close();
-                //Console.WriteLine("file closed");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
+            //    //var stream = System.IO.File.Open(@$"{System.IO.Directory.GetCurrentDirectory()}\sessions\{name}.txt", System.IO.FileMode.Open);
+            //    //Console.WriteLine("file opened");
+            //    //stream.Close();
+            //    //Console.WriteLine("file closed");
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex);
+            //}
 
+            #endregion
             var sessionInfo = System.IO.File.ReadAllText(filePath);
             return Newtonsoft.Json.JsonConvert.DeserializeObject<Session>(sessionInfo);
         }
@@ -103,17 +107,17 @@ namespace ChessPlaying.API.Services
         {
             var sessions = System.IO.File.ReadAllText(sessionsTxt);
 
-            return string.IsNullOrEmpty(sessions) ? null : sessions.Split('.');
+            return string.IsNullOrEmpty(sessions) ? null : sessions.Split(sessionSplitter);
         }
 
         public void DeleteSession(string name)
         {
             var sessions = System.IO.File.ReadAllText(sessionsTxt);
 
-            var list = sessions.Split('.').ToList();
+            var list = sessions.Split(sessionSplitter).ToList();
             list.Remove(name);
 
-            var newSessions = string.Join(',', list);
+            var newSessions = string.Join(sessionSplitter, list);
             System.IO.File.WriteAllText(sessionsTxt, newSessions);
 
             System.IO.File.Delete($@"{sessionPath}\{name}.txt");
