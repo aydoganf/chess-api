@@ -1,11 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "2pQyujZm6LhkBIagynMY8mCY4/0Q8JhNatbIRNy1tsfQNmXXTbjQ4bBA2yAzy2/3lDgHUbpQeOkXpGumQe9+8w==",
+  "dgSpecHash": "kA9dLdXlyACn4ASEp8wZF3QX9syJoo2KnHVcxL3Mtah2gRNS+pAz9WGyBKHAuFJm98C4970eGycONBjRPXZb/A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\faruk\\source\\repos\\ChessAPI\\Thrones.Gaming.Chess\\Thrones.Gaming.Chess.csproj",
+  "projectFilePath": "C:\\Users\\Faruk\\source\\repos\\chess-api\\Thrones.Gaming.Chess\\Thrones.Gaming.Chess.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\faruk\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
-    "C:\\Users\\faruk\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512"
+    "C:\\Users\\Faruk\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
   ],
   "logs": []
 }

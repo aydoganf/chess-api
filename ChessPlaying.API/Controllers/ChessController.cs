@@ -74,6 +74,11 @@ namespace ChessPlaying.API.Controllers
             List<object> sessions = new List<object>();
             var sessionNames = _chessDbService.GetSessions();
 
+            if (sessionNames == null)
+            {
+                return sessions;
+            }
+
             foreach (var sessionName in sessionNames)
             {
                 var session = _chessDbService.GetSession(sessionName.ToString());

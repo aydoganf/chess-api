@@ -9,8 +9,8 @@ namespace ChessPlaying.API.Services
 {
     public class FileDbService : IChessDbService
     {
-        private string rootPath => Environment.CurrentDirectory;
-        private string sessionPath => $@"{rootPath}\sessions";
+        private string sessionPath => $@"{Environment.CurrentDirectory}\sessions";
+        private string sessionsTxt => $@"{sessionPath}\sessions.txt";
 
         public Session CreateSession(string name, string sessionInfo)
         {
@@ -23,6 +23,12 @@ namespace ChessPlaying.API.Services
             var serialized = Newtonsoft.Json.JsonConvert.SerializeObject(session);
 
             System.IO.File.WriteAllText($@"{sessionPath}\{name}.txt", serialized);
+
+            var sessions = GetSessions();
+            var prefix = ",";
+            if (sessions == null) prefix = "";
+
+            System.IO.File.AppendAllText(sessionsTxt, $"{prefix}{name}");
             return session;
         }
 
@@ -95,16 +101,21 @@ namespace ChessPlaying.API.Services
 
         public IEnumerable<object> GetSessions()
         {
-            var directory = new System.IO.DirectoryInfo(@$"{rootPath}/sessions");
-            Console.WriteLine(directory.FullName);
-            Console.WriteLine(directory.Exists);
-            Console.WriteLine(directory.Name);
+            var sessions = System.IO.File.ReadAllText(sessionsTxt);
 
-            return directory.GetFiles().Select(f => f.Name.Split('.')[0]);
+            return string.IsNullOrEmpty(sessions) ? null : sessions.Split('.');
         }
 
         public void DeleteSession(string name)
         {
+            var sessions = System.IO.File.ReadAllText(sessionsTxt);
+
+            var list = sessions.Split('.').ToList();
+            list.Remove(name);
+
+            var newSessions = string.Join(',', list);
+            System.IO.File.WriteAllText(sessionsTxt, newSessions);
+
             System.IO.File.Delete($@"{sessionPath}\{name}.txt");
         }
     }

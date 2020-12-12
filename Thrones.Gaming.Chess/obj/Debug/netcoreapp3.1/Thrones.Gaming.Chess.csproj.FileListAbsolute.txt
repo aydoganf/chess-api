@@ -7,3 +7,12 @@ C:\Users\faruk\source\repos\ChessAPI\Thrones.Gaming.Chess\bin\Debug\netcoreapp3.
 C:\Users\faruk\source\repos\ChessAPI\Thrones.Gaming.Chess\obj\Debug\netcoreapp3.1\Thrones.Gaming.Chess.dll
 C:\Users\faruk\source\repos\ChessAPI\Thrones.Gaming.Chess\obj\Debug\netcoreapp3.1\Thrones.Gaming.Chess.pdb
 C:\Users\faruk\source\repos\ChessAPI\Thrones.Gaming.Chess\obj\Debug\netcoreapp3.1\Thrones.Gaming.Chess.csprojAssemblyReference.cache
+C:\Users\Faruk\source\repos\chess-api\Thrones.Gaming.Chess\bin\Debug\netcoreapp3.1\Thrones.Gaming.Chess.deps.json
+C:\Users\Faruk\source\repos\chess-api\Thrones.Gaming.Chess\bin\Debug\netcoreapp3.1\Thrones.Gaming.Chess.dll
+C:\Users\Faruk\source\repos\chess-api\Thrones.Gaming.Chess\bin\Debug\netcoreapp3.1\Thrones.Gaming.Chess.pdb
+C:\Users\Faruk\source\repos\chess-api\Thrones.Gaming.Chess\obj\Debug\netcoreapp3.1\Thrones.Gaming.Chess.csprojAssemblyReference.cache
+C:\Users\Faruk\source\repos\chess-api\Thrones.Gaming.Chess\obj\Debug\netcoreapp3.1\Thrones.Gaming.Chess.AssemblyInfoInputs.cache
+C:\Users\Faruk\source\repos\chess-api\Thrones.Gaming.Chess\obj\Debug\netcoreapp3.1\Thrones.Gaming.Chess.AssemblyInfo.cs
+C:\Users\Faruk\source\repos\chess-api\Thrones.Gaming.Chess\obj\Debug\netcoreapp3.1\Thrones.Gaming.Chess.csproj.CoreCompileInputs.cache
+C:\Users\Faruk\source\repos\chess-api\Thrones.Gaming.Chess\obj\Debug\netcoreapp3.1\Thrones.Gaming.Chess.dll
+C:\Users\Faruk\source\repos\chess-api\Thrones.Gaming.Chess\obj\Debug\netcoreapp3.1\Thrones.Gaming.Chess.pdb
